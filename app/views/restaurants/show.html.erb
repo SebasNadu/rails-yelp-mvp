@@ -1,0 +1,31 @@
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-headers-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" href="#">Information</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="true" href="#">Reviews</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @restaurant.name %></h5>
+    <p class="card-text">Category: <%= @restaurant.category %></p>
+    <p class="card-text">Address: <%= @restaurant.address %></p>
+    <p class="card-text">Phone: <%= @restaurant.phone_number %></p>
+    <hr>
+    <h5 class="card-title">Reviews</h5>
+    <ul class="list-group m-4">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item text-center">
+          <p><%= review.content %></p>
+          <small class=""><%= '⭐️' *  review.rating %></small>
+        </li>
+      <% end %>
+    </ul>
+    <h5>New review</h5>
+    <%= render 'restaurants/form' %>
+    <%= link_to 'Return to the list', restaurants_path, class: 'btn btn-primary mt-2' %>
+  </div>
+</div>
